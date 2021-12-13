@@ -1,6 +1,8 @@
+import './calculatorContainer.css';
+
 function CalculatorContainer() {
   return (
-    <div>
+    <div className='calc-container-div'>
       <h1>calculator container working</h1>
     </div>
   )
