@@ -3,7 +3,7 @@ import './calculatorContainer.css';
 function CalculatorContainer() {
   return (
     <div className='calc-container'>
-      <div className="display grid-item"><a href="#">display</a></div>
+      <div className="display grid-item">display</div>
       <div className="AC grid-item"><a href="#">AC</a></div>
       <div className="divide grid-item"><a href="#">/</a></div>
       <div className="multiply grid-item"><a href="#">x</a></div>

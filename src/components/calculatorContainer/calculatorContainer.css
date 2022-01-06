@@ -32,7 +32,12 @@
 .grid-item {
   border: 1px solid rgb(39, 39, 39);
   background: rgba(0, 0, 0, 0.787);
-  color: rgb(39, 39, 39);
+  /* color: rgb(39, 39, 39); */
+  color: greenyellow;
+}
+
+.grid-item:hover {
+  background: black;
 }
 
 /* make anchor tags take up full space of parent div */
@@ -41,5 +46,10 @@ a {
   height: 100%; 
   width: 100%;
   text-decoration: none;
+  color: greenyellow;
   /* background: white; */
+}
+
+a:hover {
+  font-weight: bold;
 }
