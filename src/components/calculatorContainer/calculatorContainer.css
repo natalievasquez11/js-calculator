@@ -30,8 +30,9 @@
 }
 
 .grid-item {
-  border: 1px solid black;
-  background: white;
+  border: 1px solid rgb(39, 39, 39);
+  background: rgba(0, 0, 0, 0.787);
+  color: rgb(39, 39, 39);
 }
 
 /* make anchor tags take up full space of parent div */
