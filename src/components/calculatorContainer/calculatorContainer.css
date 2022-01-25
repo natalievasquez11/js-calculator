@@ -13,10 +13,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  font-size: 35px;
+  font-size: 45px;
 }
 
-.AC, 
 .zero {
   grid-column: 1/3;
 }
