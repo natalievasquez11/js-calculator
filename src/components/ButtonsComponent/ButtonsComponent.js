@@ -1,8 +1,8 @@
 import './buttonComponents.css';
 
-function ButtonsComponent({ btnClass, btnTitle }) {
+function ButtonsComponent({ btnClass, btnTitle, btnId }) {
   return (
-    <div className={`grid-item ${btnClass}`}>
+    <div className={`grid-item ${btnClass}`} id={btnId}>
       <a href="#">{btnTitle}</a>
     </div>
   )
