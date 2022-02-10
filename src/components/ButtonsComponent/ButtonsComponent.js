@@ -1,10 +1,12 @@
 import './buttonComponents.css';
 
-function ButtonsComponent({ btnClass, btnTitle, btnId }) {
+function ButtonsComponent({ btnClass, btnValue, btnId, onButtonClick }) {
   return (
-    <div className={`grid-item ${btnClass}`} id={btnId}>
-      <a href="#">{btnTitle}</a>
-    </div>
+      <button 
+        className={`grid-item ${btnClass}`} 
+        id={btnId} 
+        value={btnValue}
+        onClick={(e) => onButtonClick(e)}>{btnValue}</button>
   )
 }
 
