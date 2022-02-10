@@ -27,8 +27,9 @@ function CalculatorContainer() {
 
   const handleDisplayChange = (e) => {
     let value = e.target.value;
-    console.log(e.target)
-    if(displayValue === 0) {
+    if(value === "AC") {
+      setDisplayValue(0);
+    } else if(displayValue === 0) {
       setDisplayValue(value);
     } else {
       setDisplayValue(displayValue + value);
