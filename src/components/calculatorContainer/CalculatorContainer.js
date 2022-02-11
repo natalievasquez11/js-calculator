@@ -32,10 +32,16 @@ function CalculatorContainer() {
     "/": function(a, b) { return a / b },
   }
 
+  function isOperator(operator) {
+    if(operations[operator]) {
+      return true;
+    } 
+    return false;
+  }
+
   const solveEquation = (equationString) => {
     let tempArrItem = equationString[0];
     let eqArr = []
-    let total = 0;
 
     for(let item = 1; item < equationString.length; item++) {
       if(equationString[item] === "+" || equationString[item] === "-" || equationString[item] === "*" || equationString[item] === "/") {
@@ -48,9 +54,19 @@ function CalculatorContainer() {
     eqArr.push(parseInt(tempArrItem));
     console.log(eqArr)
 
-    for(let x = 0; x < eqArr.length; x++) {
+    // if(Number.isInteger(eqArr[0])) {
+    //   let total = 0; 
+    // }
+    // let previous = 0;
+    // let next = 0;
 
-    }
+    // for(let x = 1; x < eqArr.length; x++) {
+    //   previous = eqArr[x - 1];
+    //   next = eqArr[x + 1];
+    //   if(isOperator(eqArr[x])) {
+    //     total = operations
+    //   }
+    // }
 
     setDisplayValue('answer');
   }
