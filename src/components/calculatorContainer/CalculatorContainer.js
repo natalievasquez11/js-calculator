@@ -28,7 +28,7 @@ function CalculatorContainer() {
   let operations = {
     "+": function(a, b) { return a + b },
     "-": function(a, b) { return a - b },
-    "*": function(a, b) { return a * b },
+    "x": function(a, b) { return a * b },
     "/": function(a, b) { return a / b },
   }
 
@@ -44,7 +44,7 @@ function CalculatorContainer() {
     let eqArr = []
 
     for(let item = 1; item < equationString.length; item++) {
-      if(equationString[item] === "+" || equationString[item] === "-" || equationString[item] === "*" || equationString[item] === "/") {
+      if(equationString[item] === "+" || equationString[item] === "-" || equationString[item] === "x" || equationString[item] === "/") {
         eqArr.push(parseInt(tempArrItem), equationString[item]);
         tempArrItem = "";
       } else {
@@ -58,17 +58,27 @@ function CalculatorContainer() {
   const solveEquation = (equationString) => {
     let eqArr = stringToArray(equationString);
     console.log(eqArr);
+    let total = 0;
 
-    for(let x = 1; x < eqArr.length; x++) {
-      
-      // previous = eqArr[x - 1];
-      // next = eqArr[x + 1];
-      // if(isOperator(eqArr[x])) {
-      //   total = operations
-      // }
+    for(let x = 0; x <= eqArr.length - 1; x++) {
+      console.log('x', x)
+      console.log(eqArr[x])
+      console.log(eqArr[x + 1])
+      console.log(eqArr[x + 2])
+      if(x === 0) {
+        total = operations[eqArr[x + 1]](eqArr[x], eqArr[x + 2]);
+        x += 2;
+      } 
+      else {
+        total = operations[eqArr[x]](total, eqArr[x + 1]);
+        x++;
+      }
+
+      console.log('total', total)
+      console.log("--------------------")
     }
 
-    setDisplayValue('answer');
+    setDisplayValue(total);
   }
 
   const handleDisplayChange = (e) => {
