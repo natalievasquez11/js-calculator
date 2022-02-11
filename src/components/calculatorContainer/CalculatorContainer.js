@@ -55,16 +55,9 @@ function CalculatorContainer() {
     return eqArr;
   }
 
-  const solveEquation = (equationString) => {
-    let eqArr = stringToArray(equationString);
-    console.log(eqArr);
+  function calculate(eqArr) {
     let total = 0;
-
-    for(let x = 0; x <= eqArr.length - 1; x++) {
-      console.log('x', x)
-      console.log(eqArr[x])
-      console.log(eqArr[x + 1])
-      console.log(eqArr[x + 2])
+    for(let x = 0; x < eqArr.length; x++) {
       if(x === 0) {
         total = operations[eqArr[x + 1]](eqArr[x], eqArr[x + 2]);
         x += 2;
@@ -73,12 +66,15 @@ function CalculatorContainer() {
         total = operations[eqArr[x]](total, eqArr[x + 1]);
         x++;
       }
-
-      console.log('total', total)
-      console.log("--------------------")
     }
+    return total;
+  }
 
-    setDisplayValue(total);
+  const solveEquation = (equationString) => {
+    let eqArr = stringToArray(equationString);
+    let solution = calculate(eqArr);
+
+    setDisplayValue(solution);
   }
 
   const handleDisplayChange = (e) => {
@@ -96,8 +92,6 @@ function CalculatorContainer() {
       setDisplayValue(displayValue + value);
     }
   }
-
-
 
   const calcBtnInfo = calculatorBtns.map((btn, index) =>
     <ButtonsComponent 
