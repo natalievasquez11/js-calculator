@@ -39,7 +39,7 @@ function CalculatorContainer() {
     return false;
   }
 
-  const solveEquation = (equationString) => {
+  function stringToArray(equationString) {
     let tempArrItem = equationString[0];
     let eqArr = []
 
@@ -51,22 +51,22 @@ function CalculatorContainer() {
         tempArrItem += equationString[item];
       }
     }
-    eqArr.push(parseInt(tempArrItem));
-    console.log(eqArr)
+    eqArr.push(parseInt(tempArrItem))
+    return eqArr;
+  }
 
-    // if(Number.isInteger(eqArr[0])) {
-    //   let total = 0; 
-    // }
-    // let previous = 0;
-    // let next = 0;
+  const solveEquation = (equationString) => {
+    let eqArr = stringToArray(equationString);
+    console.log(eqArr);
 
-    // for(let x = 1; x < eqArr.length; x++) {
-    //   previous = eqArr[x - 1];
-    //   next = eqArr[x + 1];
-    //   if(isOperator(eqArr[x])) {
-    //     total = operations
-    //   }
-    // }
+    for(let x = 1; x < eqArr.length; x++) {
+      
+      // previous = eqArr[x - 1];
+      // next = eqArr[x + 1];
+      // if(isOperator(eqArr[x])) {
+      //   total = operations
+      // }
+    }
 
     setDisplayValue('answer');
   }
