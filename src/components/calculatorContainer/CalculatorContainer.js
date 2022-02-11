@@ -44,13 +44,16 @@ function CalculatorContainer() {
     let eqArr = []
 
     for(let item = 1; item < equationString.length; item++) {
+      //if operator push running number to array and operator
       if(equationString[item] === "+" || equationString[item] === "-" || equationString[item] === "x" || equationString[item] === "/") {
         eqArr.push(parseInt(tempArrItem), equationString[item]);
         tempArrItem = "";
+      //else keep adding numbers to string as long as it doesn't hit operator
       } else {
         tempArrItem += equationString[item];
       }
     }
+    //push final number to array
     eqArr.push(parseInt(tempArrItem))
     return eqArr;
   }
@@ -58,12 +61,20 @@ function CalculatorContainer() {
   function calculate(eqArr) {
     let total = 0;
     for(let x = 0; x < eqArr.length; x++) {
+      let current = eqArr[x];
+      let next = eqArr[x + 1];
+      let nextNext = eqArr[x + 2];
+
+      //if first loop, call operations[objects key operator](with operand 1, operand 2) 
+      //& add 3 to x to get to next operator 
       if(x === 0) {
-        total = operations[eqArr[x + 1]](eqArr[x], eqArr[x + 2]);
+        total = operations[next](current, nextNext);
         x += 2;
       } 
+      //else call operations[objects key operator](with running total, 2nd operand)
+      //& add 1 to x to get to all following operators
       else {
-        total = operations[eqArr[x]](total, eqArr[x + 1]);
+        total = operations[current](total, next);
         x++;
       }
     }
@@ -73,13 +84,11 @@ function CalculatorContainer() {
   const solveEquation = (equationString) => {
     let eqArr = stringToArray(equationString);
     let solution = calculate(eqArr);
-
     setDisplayValue(solution);
   }
 
   const handleDisplayChange = (e) => {
     let value = e.target.value;
-
     if(value === "AC") {
       setDisplayValue("0");
     } else if(value === "=") {
