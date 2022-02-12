@@ -46,7 +46,7 @@ function CalculatorContainer() {
     for(let item = 1; item < equationString.length; item++) {
       //if operator push running number to array and operator
       if(equationString[item] === "+" || equationString[item] === "-" || equationString[item] === "x" || equationString[item] === "/") {
-        eqArr.push(parseInt(tempArrItem), equationString[item]);
+        eqArr.push(parseFloat(tempArrItem), equationString[item]);
         tempArrItem = "";
       //else keep adding numbers to string as long as it doesn't hit operator
       } else {
@@ -54,7 +54,7 @@ function CalculatorContainer() {
       }
     }
     //push final number to array
-    eqArr.push(parseInt(tempArrItem))
+    eqArr.push(parseFloat(tempArrItem))
     return eqArr;
   }
 
@@ -93,8 +93,10 @@ function CalculatorContainer() {
       setDisplayValue("0");
     } else if(value === "=") {
       solveEquation(displayValue);
+    } else if(value === "." && displayValue.includes(".")) {
+      return;
     } else if(displayValue === "0" && value === 0) {
-      setDisplayValue(displayValue)
+      return;
     } else if(displayValue === "0") {
       setDisplayValue(value);
     } else {
