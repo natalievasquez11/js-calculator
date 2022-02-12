@@ -93,8 +93,17 @@ function CalculatorContainer() {
       setDisplayValue("0");
     } else if(value === "=") {
       solveEquation(displayValue);
-    } else if(value === "." && displayValue.includes(".")) {
-      return;
+    } else if(value === ".") {
+      let currentChar = displayValue.length - 1; 
+      //while it's not an operator or not equal to 0
+      while(!isOperator(displayValue[currentChar]) && currentChar !== 0) {
+        currentChar--;
+      }
+      if(displayValue.substring(++currentChar).includes(".")) {
+        return;
+      } else {
+        setDisplayValue(displayValue + value);
+     }
     } else if(displayValue === "0" && value === 0) {
       return;
     } else if(displayValue === "0") {
