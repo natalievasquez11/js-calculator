@@ -3,8 +3,8 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
   border-radius: 30px;
-  height: 500px;
-  width: 400px;
+  height: 32rem;
+  width: 25rem;
 }
 
 .display {
@@ -25,6 +25,10 @@
 
 .grid-item:hover {
   background: black;
+}
+
+.display:hover {
+  background: rgba(0, 0, 0, 0.787);
 }
 
 
