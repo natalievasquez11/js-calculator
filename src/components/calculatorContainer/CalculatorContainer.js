@@ -75,8 +75,10 @@ function CalculatorContainer() {
   }
 
   function calculate(eqArr) {
+    //if array is null return null
     if(!eqArr) {
       return eqArr;
+    //if array has only one number return single item, no need to loop through array
     } else if(eqArr.length === 1) {
       return eqArr;
     }
