@@ -44,10 +44,19 @@ function CalculatorContainer() {
     let eqArr = []
 
     for(let item = 1; item < equationString.length; item++) {
-      //if operator push running number to array and operator
-      if(equationString[item] === "+" || equationString[item] === "-" || equationString[item] === "x" || equationString[item] === "/") {
-        eqArr.push(parseFloat(tempArrItem), equationString[item]);
-        tempArrItem = "";
+      // if operator push running number to array and operator
+      if(isOperator(equationString[item])) {
+        //testing for multiple operators or negative sign
+        if(isOperator(equationString[item - 1]) && equationString[item] === "-") {
+          tempArrItem = "-";
+        } else if(isOperator(equationString[item - 1])) {
+          eqArr.pop();
+          eqArr.push(equationString[item]);
+          tempArrItem = "";
+        } else {
+          eqArr.push(parseFloat(tempArrItem), equationString[item]);
+          tempArrItem = "";
+        }
       //else keep adding numbers to string as long as it doesn't hit operator
       } else {
         tempArrItem += equationString[item];
@@ -55,6 +64,7 @@ function CalculatorContainer() {
     }
     //push final number to array
     eqArr.push(parseFloat(tempArrItem))
+    console.log(eqArr)
     return eqArr;
   }
 
@@ -78,12 +88,17 @@ function CalculatorContainer() {
         x++;
       }
     }
+    console.log(total)
     return total;
   }
 
   const solveEquation = (equationString) => {
     let eqArr = stringToArray(equationString);
     let solution = calculate(eqArr);
+    //if NaN display "ERROR"
+    if(isNaN(solution)) {
+      solution = 'ERROR';
+    }
     setDisplayValue(solution);
   }
 
