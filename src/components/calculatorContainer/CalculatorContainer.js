@@ -40,6 +40,13 @@ function CalculatorContainer() {
   }
 
   function stringToArray(equationString) {
+    //if first item is an operator return null
+    if(isOperator(equationString[0])) {
+      return null;
+    //else if item is one number return single item, no need to loop through string
+    } else if(equationString.length === 1) {
+      return equationString;
+    } 
     let tempArrItem = equationString[0];
     let eqArr = []
 
@@ -64,11 +71,15 @@ function CalculatorContainer() {
     }
     //push final number to array
     eqArr.push(parseFloat(tempArrItem))
-    console.log(eqArr)
     return eqArr;
   }
 
   function calculate(eqArr) {
+    if(!eqArr) {
+      return eqArr;
+    } else if(eqArr.length === 1) {
+      return eqArr;
+    }
     let total = 0;
     for(let x = 0; x < eqArr.length; x++) {
       let current = eqArr[x];
@@ -88,7 +99,6 @@ function CalculatorContainer() {
         x++;
       }
     }
-    console.log(total)
     return total;
   }
 
@@ -96,7 +106,7 @@ function CalculatorContainer() {
     let eqArr = stringToArray(equationString);
     let solution = calculate(eqArr);
     //if NaN display "ERROR"
-    if(isNaN(solution)) {
+    if(isNaN(solution) || !solution) {
       solution = 'ERROR';
     }
     setDisplayValue(solution);
