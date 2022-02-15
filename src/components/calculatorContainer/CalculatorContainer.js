@@ -40,16 +40,16 @@ function CalculatorContainer() {
   }
 
   function stringToArray(equationString) {
+    let tempArrItem = equationString[0];
+    let eqArr = []
     //if first item is an operator return null
-    if(isOperator(equationString[0])) {
+    if(isOperator(tempArrItem) && tempArrItem !== "-") {
       return null;
     //else if item is one number return single item, no need to loop through string
     } else if(equationString.length === 1) {
       return equationString;
     } 
-    let tempArrItem = equationString[0];
-    let eqArr = []
-
+    
     for(let item = 1; item < equationString.length; item++) {
       // if operator push running number to array and operator
       if(isOperator(equationString[item])) {
