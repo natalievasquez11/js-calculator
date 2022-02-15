@@ -1,6 +1,6 @@
 # JS Calculator
 
-This project was created using React, Redux (using connect), HTML, CSS, and font awesome.
+This project was created using React, HTML, CSS and CSS grid.
 
 Deployed on github pages - [Check It Out](https://natalievasquez11.github.io/js-calculator/)
 Don't forget to choose "Javascript Calculator" in test suite when running tests!
